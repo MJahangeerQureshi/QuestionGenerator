@@ -1,0 +1,12 @@
+torch 
+torchvision 
+torchaudio
+spacy
+openai
+tqdm
+numpy
+pandas
+sentence-transformers
+transformers
+fastapi
+uvicorn[standard]
