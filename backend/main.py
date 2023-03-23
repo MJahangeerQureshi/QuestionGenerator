@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-from Generator import GenerateQuestions
+from Generator import QuestionGenerater
 
 app = FastAPI()
-gen = GenerateQuestions()
+gen = QuestionGenerater()
 
 app.add_middleware(
     CORSMiddleware,

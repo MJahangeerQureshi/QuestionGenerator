@@ -12,7 +12,7 @@ from transformers import T5ForConditionalGeneration, AutoTokenizer
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-class GenerateQuestions:
+class QuestionGenerater:
     def __init__(self, paragraph_lenght=10):
         self.paragraph_lenght = paragraph_lenght
         
@@ -71,21 +71,23 @@ class GenerateQuestions:
         gpt3_questions = []
         for context in tqdm(paragraphs, 
                             desc="Generating Questions from Arbitrary Paragraphs"):
-            
-            # using open source T5 Weights
-            generated_question = self.get_question(context)
-            questions.append({
-                "Context":context,
-                "Question": generated_question,
-                "Source":"T5"
-                            })
-            
-            # using propietry API for GPT-3.5
-            generated_gpt3_question = self.get_question_from_gpt3(context)
-            questions.append({
-                "Context":context,
-                "Question": generated_gpt3_question,
-                "Source":"OpenAI API"
-                            })
 
+            try:
+                # using propietry API for GPT-3.5
+                generated_gpt3_question = self.get_question_from_gpt3(context)
+                questions.append({
+                    "Context":context,
+                    "Question": generated_gpt3_question,
+                    "Source":"OpenAI API"
+                                })
+            
+            except:
+                # using open source T5 Weights
+                generated_question = self.get_question(context)
+                questions.append({
+                    "Context":context,
+                    "Question": generated_question,
+                    "Source":"T5"
+                                })
+                                
         return questions
