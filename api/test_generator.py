@@ -17,31 +17,32 @@ from generator import QuestionGenerater # for testing the generator
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class TestQuestionGenerater(unittest.TestCase):
-    def __init__(self):
-        self.qg = QuestionGenerater(10)
-
     def test_init(self):
-        self.assertEqual(self.qg.paragraph_lenght, 10)
-        self.assertIsInstance(self.qg.nlp, spacy.lang.en.English)
-        self.assertIsInstance(self.qg.t5_model, T5ForConditionalGeneration)
-        self.assertIn(self.qg.device, ['cuda', 'cpu'])
+        qg = QuestionGenerater(10)
+        self.assertEqual(qg.paragraph_lenght, 10)
+        self.assertIsInstance(qg.nlp, spacy.lang.en.English)
+        self.assertIsInstance(qg.t5_model, T5ForConditionalGeneration)
+        self.assertIn(qg.device, ['cuda', 'cpu'])
 
     def test_get_question(self):
+        qg = QuestionGenerater(10)
         context = "This is a sample context."
         answer = "sample"
-        question = self.qg.get_question(context, answer)
+        question = qg.get_question(context, answer)
         self.assertIsInstance(question, str)
         self.assertGreater(len(question), 0)
 
     def test_get_question_from_gpt3(self):
+        qg = QuestionGenerater(10)
         context = "This is a sample context."
-        question = self.qg.get_question_from_gpt3(context)
+        question = qg.get_question_from_gpt3(context)
         self.assertIsInstance(question, str)
         self.assertGreater(len(question), 0)
 
     def test_call(self):
+        qg = QuestionGenerater(10)
         input_text = "This is a sample context. This is another sample context."
-        questions = self.qg(input_text)
+        questions = qg(input_text)
         self.assertIsInstance(questions, list)
         self.assertGreater(len(questions), 0)
         for q in questions:
