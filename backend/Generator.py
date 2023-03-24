@@ -52,7 +52,7 @@ class QuestionGenerater:
                                             Question: 
                                             ''',
                                         temperature=0.3,
-                                        max_tokens=427,
+                                        max_tokens=1024,
                                         top_p=1,
                                         frequency_penalty=0,
                                         presence_penalty=0)

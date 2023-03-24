@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from Generator import QuestionGenerater
 
 app = FastAPI()
-gen = QuestionGenerater()
+gen = QuestionGenerater(20)
 
 app.add_middleware(
     CORSMiddleware,
