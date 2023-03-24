@@ -11,6 +11,8 @@ import spacy  # for natural language processing
 
 from transformers import T5ForConditionalGeneration, AutoTokenizer  # for text generation
 
+from generator import QuestionGenerater # for testing the generator
+
 # set the OpenAI API key from the environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  mlapi:
+  api:
     restart: unless-stopped
-    build: ./backend/
+    build: ./api/
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     network_mode: "host"
