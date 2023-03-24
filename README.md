@@ -6,9 +6,9 @@ QuestionGenerator is a small demo API/WebApp that generates questions from an ar
 
 To run this project on your local machine, follow the steps below:
 
-1. Clone the repository using the following command:
+2. Clone the repository using the following command:
    ```
-   git clone <repository_url>
+   git clone https://github.com/MJahangeerQureshi/QuestionGenerator
    ```
 2. Navigate to the project directory `cd QuestionGenerator`
 
@@ -22,7 +22,7 @@ To run this project on your local machine, follow the steps below:
 
 6. Install the required packages `pip install -r requirements.txt`
 
-7. Run the API `python main.py`
+7. Run the API `uvicorn main:app --host 0.0.0.0 --port 9004`
 
 ### Frontend
 
@@ -34,7 +34,7 @@ To run this project on your local machine, follow the steps below:
 
 11. Install the required packages `pip install -r requirements.txt`
 
-12. Run the frontend `python app.py`
+12. Run the frontend `streamlit run app.py`
 
 ### Docker
 
@@ -42,7 +42,7 @@ You can also run this project using Docker.
 
 1. Clone the repository using the following command:
    ```
-   git clone <repository_url>
+   git clone https://github.com/MJahangeerQureshi/QuestionGenerator
    ```
 2. Navigate tothe project directory `cd QuestionGenerator`
 
@@ -56,26 +56,27 @@ After running the API, you can send a POST request to `http://localhost:8000/gen
 
 ```
 {
-    "text": "Sample text for generating questions."
+    "input_text": "Sample text for generating questions."
 }
 ```
 
 This will return a JSON response with a list of generated questions:
 
 ```
-{
-    "questions": [
-        "What is the sample text for generating questions?",
-        "What can be generated from sample text?",
-        "What is the purpose of generating questions from sample text?"
-    ]
-}
+[
+   {
+      "Context" : "The Context for the Generated Question",
+      "Question" : "The Generated Question",
+      "Source" : "OpenAI API or T5 if OpenAI isnt available",
+   },
+   ....
+]
 ```
 
 ### Frontend
 
-After running the frontend, you can access the web app on `http://localhost:5000`. Simply enter some text into the input field and click the "Generate Questions" button. The generated questions will be displayed below the input field.
+After running the frontend, you can access the web app on `http://localhost:9007`. Simply enter some text into the input field and click the "Auto Suggest Questions" button. The generated questions will be displayed below the input field.
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the GPL License. See the `LICENSE` file for more information.
