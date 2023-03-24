@@ -1,6 +1,6 @@
-# QuestionGenerator
+# Question Generator
 
-QuestionGenerator is a small demo API/WebApp that generates questions from an arbitrary amount of text. 
+Question Generator is a small demo API/WebApp that generates questions from an arbitrary amount of text. 
 
 ## Installation
 
@@ -56,7 +56,7 @@ You can also run this project using Docker.
    OPENAI_API_KEY=<your_openai_api_key>
    ```
 
-4. Build and start the containers using `docker-composeup`
+4. Build and start the containers using `docker-compose up`
 
 ## Usage
 
@@ -86,6 +86,32 @@ This will return a JSON response with a list of generated questions:
 ### Frontend
 
 After running the frontend, you can access the web app on `http://localhost:9007`. Simply enter some text into the input field and click the "Auto Suggest Questions" button. The generated questions will be displayed below the input field.
+
+## Performing Unit Tests
+
+### Testing without Docker
+
+To perform tests on this project, follow the steps below:
+
+1. Navigate to the `api` directory `cd api`
+
+2. Activate the virtual environment `source env/bin/activate`
+
+3. Run the tests using the following command:
+   ```
+   python -m unittest
+   ```
+
+### Testing with Docker
+
+To perform tests on this project with docker, follow the steps below:
+
+1. Run the tests using the following command:
+   ```
+   docker-compose exec api python -m unittest
+   ```
+
+This will run all the tests in the directory and display the results. Make sure that the API is not running while running the tests.
 
 ## License
 
