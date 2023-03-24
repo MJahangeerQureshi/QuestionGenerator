@@ -6,35 +6,40 @@ QuestionGenerator is a small demo API/WebApp that generates questions from an ar
 
 To run this project on your local machine, follow the steps below:
 
-2. Clone the repository using the following command:
+1. Clone the repository using the following command:
    ```
    git clone https://github.com/MJahangeerQureshi/QuestionGenerator
    ```
 2. Navigate to the project directory `cd QuestionGenerator`
 
+3. Create a `.env` file in the main directory with the `OPENAI_API_KEY` as follows:
+   ```
+   OPENAI_API_KEY=<your_openai_api_key>
+   ```
+
 ### API
 
-3. Navigate to the `api` directory `cd api`
+4. Navigate to the `api` directory `cd api`
 
-4. Create a virtual environment `python3 -m venv env`
+5. Create a virtual environment `python3 -m venv env`
 
-5. Activate the virtual environment `source env/bin/activate`
+6. Activate the virtual environment `source env/bin/activate`
 
-6. Install the required packages `pip install -r requirements.txt`
+7. Install the required packages `pip install -r requirements.txt`
 
-7. Run the API `uvicorn main:app --host 0.0.0.0 --port 9004`
+8. Run the API `uvicorn main:app --host 0.0.0.0 --port 9004`
 
 ### Frontend
 
-8. Open a new terminal window and navigate to the `frontend` directory `cd ../frontend`
+9. Open a new terminal window and navigate to the `frontend` directory `cd ../frontend`
 
-9. Create a virtual environment `python3 -m venv env`
+10. Create a virtual environment `python3 -m venv env`
 
-10. Activate the virtual environment `source env/bin/activate`
+11. Activate the virtual environment `source env/bin/activate`
 
-11. Install the required packages `pip install -r requirements.txt`
+12. Install the required packages `pip install -r requirements.txt`
 
-12. Run the frontend `streamlit run app.py`
+13. Run the frontend `streamlit run app.py`
 
 ### Docker
 
@@ -44,15 +49,20 @@ You can also run this project using Docker.
    ```
    git clone https://github.com/MJahangeerQureshi/QuestionGenerator
    ```
-2. Navigate tothe project directory `cd QuestionGenerator`
+2. Navigate to the project directory `cd QuestionGenerator`
 
-3. Build and start the containers using `docker-compose up`
+3. Create a `.env` file in the main directory with the `OPENAI_API_KEY` as follows:
+   ```
+   OPENAI_API_KEY=<your_openai_api_key>
+   ```
+
+4. Build and start the containers using `docker-composeup`
 
 ## Usage
 
 ### API
 
-After running the API, you can send a POST request to `http://localhost:8000/generate` with the following JSON payload:
+After running the API, you can send a POST request to `http://localhost:9004/suggest_questions` with the following JSON payload:
 
 ```
 {
