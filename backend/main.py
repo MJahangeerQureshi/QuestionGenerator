@@ -20,7 +20,7 @@ class TextData(BaseModel):
 
 
 @app.post("/suggest_questions/")
-async def generateArticle(Data: ArticleData):
+async def generateArticle(Data: TextData):
     data = Data.dict()
     questions = gen(data["input_text"])
     return questions

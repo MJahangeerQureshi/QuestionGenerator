@@ -65,7 +65,7 @@ class QuestionGenerater:
         paragraphs = [' '.join(i) for i in np.array_split(sentences, 
                       int(np.round(len(sentences) / self.paragraph_lenght)))]
 
-        return paragraphs
+        #return paragraphs
 
         questions = []
         gpt3_questions = []

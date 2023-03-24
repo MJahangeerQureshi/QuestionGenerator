@@ -10,3 +10,4 @@ sentence-transformers
 transformers
 fastapi
 uvicorn[standard]
+protobuf==3.20.0
