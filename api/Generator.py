@@ -52,7 +52,7 @@ class QuestionGenerater:
                                             Question: 
                                             ''',
                                         temperature=0.3,
-                                        max_tokens=1024,
+                                        max_tokens=427,
                                         top_p=1,
                                         frequency_penalty=0,
                                         presence_penalty=0)
@@ -62,11 +62,13 @@ class QuestionGenerater:
         cleaned_text = ' '.join([i.strip() for i in input_text.splitlines() if i.strip()])
         sentences = [str(i).strip() for i in list(self.nlp(cleaned_text).sents) if str(i).strip()]
 
-        paragraphs = [' '.join(i) for i in np.array_split(sentences, 
-                      int(np.round(len(sentences) / self.paragraph_lenght)))]
+        num_chunks = int(np.round(len(sentences) / self.paragraph_lenght))
 
-        #return paragraphs
-
+        if num_chunks:
+            paragraphs = [' '.join(i) for i in np.array_split(sentences, num_chunks)]
+        else:
+            paragraphs = [' '.join(sentences)]
+        
         questions = []
         gpt3_questions = []
         for context in tqdm(paragraphs, 
@@ -89,5 +91,5 @@ class QuestionGenerater:
                     "Question": generated_question,
                     "Source":"T5"
                                 })
-                                
+
         return questions

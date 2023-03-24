@@ -1,18 +1,14 @@
 version: "3.9"
 
 services:
-  ml-backend:
+  mlapi:
     restart: unless-stopped
     build: ./backend/
-    ports:
-      - "9004:9000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+    network_mode: "host"
 
-  st-frontend:
+  frontend:
     restart: unless-stopped
     build: ./frontend/
-    ports:
-      - "9007:9000"
-    environment:
-      - ML_ENDPOINT=${ML_ENDPOINT}
+    network_mode: "host"

@@ -11,7 +11,7 @@ input_text = st.text_area("Enter Text")
 if st.button("Auto Suggest Questions"):
     with st.spinner("Reading and Thinking of Questions"):
         response = requests.request("POST", 
-                                    url=os.getenv("ML_ENDPOINT"),
+                                    url="http://localhost:9004/suggest_questions/",
                                     headers={
                                             'Content-Type': 'application/json'
                                             }, 
